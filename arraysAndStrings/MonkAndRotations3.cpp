@@ -1,21 +1,30 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <iostream>
 
-void swap(char * A, int ALength, long count){
-    long temp2, temp;
-    int i=0;
-    for(i=0;i<ALength;i++){
-        temp=(i+count*(ALength-1))%ALength;
-        printf("%d", *(A+int(temp)));
-    }
+using namespace std;
+
+void swap(long *A, long count_, int length) {
+	int temp2, temp;
+	for (int i = 0; i < length; i++) {
+		temp = (i + count_*(length - 1)) % length;
+		cout << A[temp] << " ";
+	}
 }
 
-void main(){
-    int T;int j;int N, S;
-
-    scanf("%d", &T);
-    for(j=0;j<T;j++){
-        scanf("%d", &N);
-        scanf("%d", &S);
-    }
+int main() {
+	int T;
+	std::cin >> T;
+	for (int j = 0; j < T; j++) {
+		int N, S;
+		cin >> N;
+		cin >> S;
+		long *A=new long[N];
+		for (int i = 0; i < N; i++) {
+			int temp;
+			cin >> A[i];
+			//cout << A[i];
+		}
+		swap(A, S, N);
+		cout << "\n";
+	}
+	return 0;
 }
