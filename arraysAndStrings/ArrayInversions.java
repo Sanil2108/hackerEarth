@@ -15,24 +15,24 @@ class ArrayInversions{
 
             for(int j=0;j<N;j++){
                 for(int k=0;k<N;k++){
-                    boolean currentInverted=false;
-                    int current=A[k][j];
+                    //boolean currentInverted=false;
+                    //int current=A[k][j];
                     for(int l=k;l>=0;l--){
                         if(A[l][j]>A[k][j]){
-                            currentInverted=true;
+                            //currentInverted=true;
                             counter++;
-                            break;
+                            //break;
                         }
                     }
-                    if(!currentInverted){
+                    //if(!currentInverted){
                         for(int l=j;l>=0;l--){
                             if(A[k][l]>A[k][j]){
-                                currentInverted=true;
+                                //currentInverted=true;
                                 counter++;
-                                break;
+                                //break;
                             }
                         }
-                    }
+                    //}
                 }
             }
 
