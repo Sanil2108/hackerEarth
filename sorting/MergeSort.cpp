@@ -55,6 +55,7 @@ long* mergeSort(long* A, long start, long end){
 }
 
 int main(){
+    int test=0;
     counter=0;
     long n;
     cin>>n;
