@@ -71,8 +71,8 @@ class UndirectedGraph{
 
 	public static void main(String[] args){
 		UndirectedGraph graph=new UndirectedGraph(1);
-		// graph.addEdge(graph.getRoot(), graph.addNode(2));
-		// graph.printAdjacencyMatrix();
+		graph.addEdge(graph.getRoot(), graph.addNode(2));
+		graph.printAdjacencyMatrix();
 		
 	}
 }
