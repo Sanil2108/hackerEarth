@@ -1,8 +1,13 @@
 import java.util.Scanner;
 
-public class Heap{
+class Heap{
     long[] A;
     int index;
+
+    public Heap(int size){
+        this.A = new long[size+1];
+        index = 1;
+    }
 
     public Heap(long[] original){
         this.A = original;
@@ -68,7 +73,7 @@ public class Heap{
                 return;
             }
         }else{
-            if(A[left]>A[index]){
+            if(A[leftq]>A[index]){
                 largest = left;
             }else{
                 return;
@@ -83,31 +88,31 @@ public class Heap{
     }
 
     public static void main(String[] args){
-        Scanner scanner=new Scanner(System.in);
-        int initSize = scanner.nextInt();
-        long[] arr = new long[initSize+1];
-        for(int i=1;i<=initSize;i++){
-            arr[i] = scanner.nextLong();
-        }
-        Heap h = new Heap(arr);
-        int maxIncreaseSize = scanner.nextInt();
-        h.increaseSize(maxIncreaseSize);
-        for(int i=0;i<maxIncreaseSize;i++){
-            int op=scanner.nextInt();
-            if(op == 1){
-                h.addToHeap(scanner.nextLong());
-            }else {
-                System.out.println(h.A[1]);
+        Scanner in=new Scanner(System.in);
+        int n = in.nextInt();
+
+        Heap h=new Heap(n);
+
+        for(int i=0;i<n;i++){
+            h.addToHeap(in.nextLong());
+            if(h.index < 4){
+                System.out.println(-1);
+            }else{
+                int lengthToTraverse = (h.index < 8)?h.A.length:8;
+                long max1 = -1;
+                long max2 = -1;
+                for(int j=2;j<lengthToTraverse;j++){
+                    if(h.A[j]>max1){
+                        if(max1 > max2){
+                            max2 = max1;
+                        }
+                        max1 = h.A[j];
+                    }else if(h.A[j]>max2){
+                        max2 = h.A[j];
+                    }
+                }
+                System.out.println(h.A[1] * max1 * max2);
             }
         }
-
-
-//
-//        long[] arr = {0, 100, 90, 80, 60, 70, 50, 40, 65};
-////        int[] arr = {0, 0, 2, 6, 10, 4, 7, 3};
-//        Heap h = new Heap(arr);
-//        h.increaseSize(1);
-//        h.addToHeap(62);
-//        System.out.println(h);
     }
 }
